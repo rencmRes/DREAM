@@ -106,6 +106,7 @@ The script automatically resumes from the latest checkpoint in the training `mod
 Run:
 
 ```bash
+#Download the [pre-trained model](https://doi.org/10.6084/m9.figshare.33085976) and place it in the weights folder.
 python main_test_gan_DREAM.py --opt options/test_DREAM_sr_x2_gan.json
 ```
 
@@ -117,16 +118,6 @@ result/
 
 The testing script does not create a new task folder from the configuration file.
 
-## Pretrained Weights
-
-The repository currently uses the following weight files:
-
-| Dataset | Weight file |
-| --- | --- |
-| ER | `weights/ER.pth` |
-| MTs | `weights/MTs.pth` |
-
-Large model files may be better hosted through GitHub Releases, Google Drive, Zenodo, or another external storage service if the repository size becomes too large.
 
 ## Configuration
 
