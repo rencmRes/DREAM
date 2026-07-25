@@ -40,8 +40,6 @@ conda activate dream
 pip install torch torchvision numpy scipy scikit-image imageio opencv-python tqdm
 ```
 
-Install the PyTorch version that matches your CUDA environment. For GPU training, follow the official PyTorch installation command for your CUDA version.
-
 ## Data Preparation
 
 The dataset loader expects paired `.tif` files. WF and GT images should have matching file names.
