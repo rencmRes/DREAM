@@ -1,49 +1,8 @@
 # DREAM
 
-DREAM is a deep-learning framework for fluorescence microscopy image restoration and super-resolution. The project contains training and inference code for a GAN-based DREAM model, with paired wide-field (WF) and ground-truth (GT) images as input data.
+DREAM is a deep-learning framework for fluorescence microscopy image restoration and super-resolution. The project consists of two coupled components: a degradation representation learner and a degradation-conditioned SR generator.
+![DREAM network architecture](figs/Network.png)
 
-> Paper title, authors, institution, and citation information can be added here after the manuscript is finalized.
-
-## Overview
-
-DREAM aims to reconstruct high-resolution microscopy images from low-quality WF inputs. The current implementation combines:
-
-- A DREAM generator for image restoration and super-resolution.
-- A degradation representation encoder trained with a MoCo-style contrastive queue.
-- A U-Net discriminator with spectral normalization for adversarial training.
-- Pixel, perceptual, contrastive, and GAN losses for training.
-
-The repository provides a compact workflow for training, testing, and saving restored results.
-
-## Network Architecture
-
-Place the network architecture figure at `docs/figures/dream_architecture.png`, then keep or update the link below.
-
-![DREAM network architecture](docs/figures/dream_architecture.png)
-
-Suggested figure content:
-
-- WF image input.
-- Encoder branch for degradation representation learning.
-- DREAM restoration / super-resolution generator.
-- GAN discriminator used during training.
-- Output DREAM image and supervision from GT image.
-
-## Results
-
-Place representative qualitative results in `docs/results/`. The table below is reserved for GitHub visualization.
-
-| Dataset | WF input | DREAM output | GT |
-| --- | --- | --- | --- |
-| ER | `docs/results/er_wf.png` | `docs/results/er_dream.png` | `docs/results/er_gt.png` |
-| MTs | `docs/results/mts_wf.png` | `docs/results/mts_dream.png` | `docs/results/mts_gt.png` |
-
-You can also add quantitative metrics here after evaluation.
-
-| Dataset | PSNR | SSIM | Notes |
-| --- | ---: | ---: | --- |
-| ER | TBD | TBD | Add evaluation setting |
-| MTs | TBD | TBD | Add evaluation setting |
 
 ## Repository Structure
 
@@ -118,7 +77,10 @@ For testing, update `options/test_DREAM_sr_x2_gan.json`:
     "dataroot_L": "testdata/MTs/WF"
   }
 }
+#If there is no GT, then set dataroot_H to be the same as dataroot_L.
 ```
+
+
 
 ## Training
 
@@ -183,23 +145,3 @@ Important options are stored in JSON files under `options/`.
 | `checkpoint_save` | Model checkpoint interval |
 | `checkpoint_test` | Validation interval during training |
 
-## Citation
-
-If you use this code, please cite the paper:
-
-```bibtex
-@article{dream2026,
-  title   = {DREAM: Title to Be Updated},
-  author  = {Author List to Be Updated},
-  journal = {Journal or Conference to Be Updated},
-  year    = {2026}
-}
-```
-
-## Acknowledgements
-
-This project builds on common components used in image restoration and super-resolution research, including GAN training, perceptual loss, and MoCo-style contrastive representation learning.
-
-## License
-
-Add the project license here before publishing the repository.
