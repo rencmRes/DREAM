@@ -103,10 +103,9 @@ The script automatically resumes from the latest checkpoint in the training `mod
 
 ## Testing
 
-Run:
+Run: Download the [pre-trained model](https://doi.org/10.6084/m9.figshare.33085976) and place it in the weights folder.
 
 ```bash
-#Download the [pre-trained model](https://doi.org/10.6084/m9.figshare.33085976) and place it in the weights folder.
 python main_test_gan_DREAM.py --opt options/test_DREAM_sr_x2_gan.json
 ```
 
