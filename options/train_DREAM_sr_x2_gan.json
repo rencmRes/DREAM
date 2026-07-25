@@ -1,0 +1,72 @@
+{
+  "task": "dream_sr_x2_gan",
+  "model": "gan",
+  "gpu_ids": [0],
+  "scale": 2,
+  "n_channels": 1,
+  "path": {
+    "root": "DREAM_GAN_MTs"
+  },
+  "datasets": {
+    "train": {
+      "name": "train_dataset",
+      "n_colors": 1,
+      "rgb_range": 1,
+      "dataset_type": "DREAM",
+      "dataroot_H": "",
+      "dataroot_L": "",
+      "dataloader_shuffle": true,
+      "dataloader_num_workers": 16,
+      "dataloader_batch_size": 16
+    },
+    "test": {
+      "name": "test_dataset",
+      "n_colors": 1,
+      "rgb_range": 1,
+      "dataset_type": "DREAM",
+      "dataroot_H": "",
+      "dataroot_L": ""
+    }
+  },
+  "netG": {
+    "net_type": "dream",
+    "upscale": 2,
+    "init_type": "default"
+  },
+  "netD": {
+    "net_type": "discriminator_unet",
+    "in_nc": 1,
+    "base_nc": 64,
+    "init_type": "orthogonal",
+    "init_bn_type": "uniform",
+    "init_gain": 0.2
+  },
+  "train": {
+    "G_lossfn_type": "l1",
+    "G_lossfn_weight": 1,
+    "F_lossfn_type": "l1",
+    "F_lossfn_weight": 1,
+    "F_feature_layer": [2, 7, 16, 25, 34],
+    "F_weights": [0.1, 0.1, 1.0, 1.0, 1.0],
+    "F_use_input_norm": true,
+    "F_use_range_norm": false,
+    "gan_type": "gan",
+    "D_lossfn_weight": 0.1,
+    "E_decay": 0.999,
+    "D_init_iters": 0,
+    "G_optimizer_lr": 0.0001,
+    "D_optimizer_lr": 0.0001,
+    "G_scheduler_milestones": [400000, 500000, 550000, 575000, 600000],
+    "G_scheduler_gamma": 0.5,
+    "G_optimizer_reuse": true,
+    "D_scheduler_milestones": [400000, 500000, 550000, 575000, 600000],
+    "D_scheduler_gamma": 0.5,
+    "D_optimizer_reuse": false,
+    "G_param_strict": true,
+    "D_param_strict": true,
+    "E_param_strict": true,
+    "checkpoint_test": 2000,
+    "checkpoint_save": 2000,
+    "checkpoint_print": 1000
+  }
+}
